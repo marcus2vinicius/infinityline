@@ -1,0 +1,45 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../resources/layout/layout.xhtml">
+        <ui:define name="content">
+<p:accordionPanel>
+    <p:tab title="Saldo" closable="false">
+        Seu lucro e #{diagnosctic.saldo} reais.<br/>
+        <i>Base de calculo: Confirmacoes Concluidas - Minhas Doacoes = Saldo</i>
+    </p:tab>
+    <p:tab title="Meu Diagnostico" closable="true">
+        <p:dataList value="#{diagnosctic.diags}" var="d" type="ordered">
+            #{d.descri}
+        </p:dataList>
+    </p:tab>
+    <p:tab title="Diagnostico da Rede" closable="true">
+        <h:panelGrid id="pndatatable">
+            <p:dataTable id="dataTableUsersDiag" value="#{home.users}" var="u"
+                         paginator="true" rows="10"
+                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rowsPerPageTemplate="5,10,50,100" paginatorPosition="bottom">
+
+                <p:column headerText="Nome" sortBy="#{u.name}" filterBy="#{u.name}" filterMatchMode="contains">
+                    <h:outputText value="#{u.name}"/>
+                </p:column>
+                <p:column headerText="Diagnostico">
+                    <h:outputText value="#{diagnosctic.getDiag(u)}"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    Total #{home.users.size()}
+                </f:facet>
+            </p:dataTable>
+        </h:panelGrid>
+
+    </p:tab>
+</p:accordionPanel>
+
+
+
+</ui:define>
+</ui:composition>
+</ui:component>

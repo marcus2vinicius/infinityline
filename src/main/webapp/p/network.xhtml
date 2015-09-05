@@ -1,0 +1,50 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../resources/layout/layout.xhtml">
+        <ui:define name="content">
+
+    <h:panelGrid id="pndatatable">
+        <p:dataTable id="dataTableUsers" value="#{home.users}" var="u" reflow="true"
+                     paginator="true" rows="10"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rowsPerPageTemplate="5,10,50,100" emptyMessage="Voce nao tem downline, efetue indicacoes"
+                paginatorPosition="bottom">
+
+            <f:facet name="header">
+                <p:commandButton id="btimport" value="Importar no Celular" ajax="false" icon="ui-icon-arrowthick-1-s">
+                    <p:fileDownload value="#{home.file}"/>
+                </p:commandButton>
+            </f:facet>
+
+            <p:column headerText="Nome" sortBy="#{u.name}" filterBy="#{u.name}" filterMatchMode="contains">
+                <h:outputText value="#{u.name}"/>
+            </p:column>
+            <p:column headerText="Login" sortBy="#{u.login}" filterBy="#{u.login}" filterMatchMode="contains">
+                <h:outputText value="#{u.login}"/>
+            </p:column>
+            <p:column headerText="Fone" filterBy="#{home.getFone(u)}" filterMatchMode="contains">
+                <h:outputText value="#{home.getFone(u)}"/>
+            </p:column>
+            <p:column headerText="Whatsapp" filterBy="#{home.getWhatsapp(u)}" filterMatchMode="contains">
+                <h:outputText value="#{home.getWhatsapp(u)}"/>
+            </p:column>
+            <p:column headerText="Patrocinador" filterBy="#{u.sponsor}" filterMatchMode="contains">
+                <h:outputText value="#{u.sponsor}"/>
+            </p:column>
+            <p:column headerText="Nivel" filterBy="#{u.levelCurrent}" filterMatchMode="exact">
+                <h:outputText value="#{u.levelCurrent}"/>
+            </p:column>
+            <p:column headerText="Linha" filterBy="#{u.line}" filterMatchMode="exact">
+                <h:outputText value="#{u.line}"/>
+            </p:column>
+            <f:facet name="footer">
+                Total #{home.users.size()}
+            </f:facet>
+        </p:dataTable>
+    </h:panelGrid>
+        </ui:define>
+    </ui:composition>
+</ui:component>

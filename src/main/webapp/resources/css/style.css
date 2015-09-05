@@ -1,0 +1,54 @@
+body{
+	background-image: url('img/logo2peb.png');
+}
+.head{
+	height: 100px;
+	color: #ffffff;
+  	background-color: #428bca;
+  	border-color: #428bca;
+  	margin: 0px;
+}
+.footer
+{
+	color: #ffffff;
+  	background-color: #428bca;
+  	border-color: #428bca;
+  	height: 79px;
+  	padding-top: 10px;
+  	position: relative;
+  	bottom: 0px;
+}
+.head h1{
+	margin-left: 10px;
+}
+.body{
+	background: #f5f5f5;
+	min-height: 500px;
+	height: auto;
+	width: 100%;
+	margin-top: -20px;
+	margin-bottom: 0px;
+}
+.body table{
+	margin: 0px;
+}
+#algumacoisa{
+	-webkit-transition: all 3s easy-in-out;
+	-moz-transition: all 3s easy-in-out;
+	-o-transition: all 3s easy-in-out;
+	-ms-transition: all 3s easy-in-out;
+	transition: all 3s easy-in-out;
+	border-radius: 10px;
+}
+.form-index
+{
+	margin-left: 15px;
+}
+
+.ui-messages-error-detail {
+	visibility: hidden;
+}
+
+.ui-messages-fatal-summary {
+	
+}

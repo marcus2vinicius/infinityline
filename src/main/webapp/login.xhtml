@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Login</title>
+	<title>Sistema de Reservas - Login</title>
+	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+		.login-center
+		{
+			float: none;
+			margin-top: 20%;
+		}
+	</style>
+	<f:event listener="#{login.loggedRedirect}" type="preRenderView"/>
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-64608634-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</h:head>
+
+<h:body>
+<div class="container">
+	<div class="row">
+		<div class="span5 offset3 well login-center">
+			<h:messages id="msg" showDetail="true"/>
+			<h:form id="login" styleClass="form-signin">
+
+				<h2 class="form-signin-heading">Infinity Dicas</h2>
+
+					<h:outputText value="Login: "/>
+					<h:inputText value="#{login.login}" required="true" styleClass="input-block-level"
+							requiredMessage="Login Obrigatorio"/>
+					<h:outputText value="Senha: "/>
+					<h:inputSecret styleClass="input-block-level" value="#{login.password}" required="true"
+							requiredMessage="Senha Obrigatoria"/>
+				<h:outputText value="Segunda Fase"/>
+				<h:selectBooleanCheckbox styleClass="input-block-level" value="#{login.segundaFase}" />
+				<h:commandButton styleClass="btn btn-large btn-primary"
+						id="btentrar" value="Entrar" actionListener="#{login.login()}" update="msg"/>
+
+			</h:form>
+			<p><a href="http://grupoinfinitydicas.blogspot.com.br/" target="_blank">
+				Aprenda a usar esta ferramenta
+			</a>
+			</p>
+			<p><a href="http://www.officeinfinity.org/infinitydicas" target="_blank">
+				  www.officeinfinity.org/infinitydicas
+				</a>
+			</p>
+		<p>Whatsapp - 087991047532</p>
+		</div>
+	</div>
+</div>
+</h:body>
+</html>
