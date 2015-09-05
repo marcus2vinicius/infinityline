@@ -1,11 +1,8 @@
 package view;
 
-import email.MailSend;
 import jsoup.model.*;
 import jsoup.process.*;
 import org.primefaces.context.RequestContext;
-import util.SendMailUsers;
-import util.Session;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -137,24 +134,12 @@ public class LoginView implements Serializable {
 
         Runnable run = () -> {infinityLine.logout();};
         new Thread(run).start();
-        sendmail();
         try{
             FacesContext.getCurrentInstance().getExternalContext().redirect("/login.xhtml");
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         }catch (Exception e){}
 
     }
-
-    private void sendmail() {
-        MailSend ms;
-        if(listDone())
-            ms = new MailSend(new SendMailUsers().getMailTemplate(user,user.getAllUsers()));
-        else
-            ms = new MailSend(new SendMailUsers().getMailTemplate(user,user.getUsers()));
-        ms.sendAsync();
-        System.out.println("EMail ENviado");
-    }
-
     public InfinityLine getInfinityLine() {
         return infinityLine;
     }
